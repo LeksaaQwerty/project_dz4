@@ -1,33 +1,34 @@
 public class LiveLock{
-
-    /* 
+    
     static volatile boolean run = true;
-        
 
-    new Thread(() -> {
-    while (true) {
-        if (run){
-            System.out.println("проходи");
-            run = false;
-        }
-        try { 
-            Thread.sleep(1000); 
-        }
-        catch (Exception e) {}
-    }
-    }).start();
+    public static void main(String[] args) {
+    
 
-    new Thread(() -> {
-    while (true) {
-        if (!run){
-            System.out.println("нет , ты проходи");
-            run = true;
+        new Thread(() -> {
+        while (true) {
+            if (run){
+                System.out.println("проходи");
+                run = false;
+            }
+            try { 
+                Thread.sleep(1000); 
+            }
+            catch (Exception e) {}
         }
-        try { 
-            Thread.sleep(1000); 
+        }).start();
+
+        new Thread(() -> {
+        while (true) {
+            if (!run){
+                System.out.println("нет , ты проходи");
+                run = true;
+            }
+            try { 
+                Thread.sleep(1000); 
+            }
+            catch (Exception e) {}
         }
-        catch (Exception e) {}
+        }).start();
     }
-    }).start();
-    */
 }
